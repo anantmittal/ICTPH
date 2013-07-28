@@ -1,0 +1,197 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/ictph/!svn/ver/357/trunk/sgv/application/views/hospitalization
+END
+show_claim_settlement.php
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/hospitalization/show_claim_settlement.php
+END
+show_claim_entry_form.php
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/hospitalization/show_claim_entry_form.php
+END
+show_claim_for_review_form.php
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/hospitalization/show_claim_for_review_form.php
+END
+show_policy_lookup_request.php
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/hospitalization/show_policy_lookup_request.php
+END
+header_menu_search.php
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/hospitalization/header_menu_search.php
+END
+policy_context.php
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/ictph/!svn/ver/357/trunk/sgv/application/views/hospitalization/policy_context.php
+END
+show_settlement_detail.php
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/hospitalization/show_settlement_detail.php
+END
+backend_claim_form_download.php
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/hospitalization/backend_claim_form_download.php
+END
+old_show_backend_claim_entry.php
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/hospitalization/old_show_backend_claim_entry.php
+END
+show_preauth_entry_form.php
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/hospitalization/show_preauth_entry_form.php
+END
+show_hospital_payment_due.php
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/hospitalization/show_hospital_payment_due.php
+END
+show_backend_claim_entry.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/hospitalization/show_backend_claim_entry.php
+END
+show_backend_settlement_detail.php
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/hospitalization/show_backend_settlement_detail.php
+END
+show_preauth_lookup_response.php
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/hospitalization/show_preauth_lookup_response.php
+END
+show_hospitalization.php
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/hospitalization/show_hospitalization.php
+END
+show_claim_payment.php
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/hospitalization/show_claim_payment.php
+END
+show_payment_request.php
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/hospitalization/show_payment_request.php
+END
+show_backend_claim_payment.php
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/hospitalization/show_backend_claim_payment.php
+END
+show_add_hospital.php
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/hospitalization/show_add_hospital.php
+END
+show_backend_claim_status.php
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/hospitalization/show_backend_claim_status.php
+END
+show_backend_claim_settlement.php
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/hospitalization/show_backend_claim_settlement.php
+END
+show_enter_hospital_record_form.php
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/hospitalization/show_enter_hospital_record_form.php
+END
+show_preauth_reject.php
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/hospitalization/show_preauth_reject.php
+END
+show_policy_lookup_response.php
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/ictph/!svn/ver/296/trunk/sgv/application/views/hospitalization/show_policy_lookup_response.php
+END
+show_enter_claim_id_for_review_form.php
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/hospitalization/show_enter_claim_id_for_review_form.php
+END
+show_claim_settlement_detail.php
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/hospitalization/show_claim_settlement_detail.php
+END
+show_hospital_list.php
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/hospitalization/show_hospital_list.php
+END
+preauth_form_download.php
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/hospitalization/preauth_form_download.php
+END
+hospitalization_context.php
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/hospitalization/hospitalization_context.php
+END
+show_enter_hospitalization_id_for_claim_entry.php
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/hospitalization/show_enter_hospitalization_id_for_claim_entry.php
+END
+show_reason.php
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/hospitalization/show_reason.php
+END
+home.php
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/ictph/!svn/ver/293/trunk/sgv/application/views/hospitalization/home.php
+END

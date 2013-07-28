@@ -1,0 +1,155 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/ictph/!svn/ver/375/trunk/sgv/application/views/scm
+END
+list_orders.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/ictph/!svn/ver/373/trunk/sgv/application/views/scm/list_orders.php
+END
+product_batch_add.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/scm/product_batch_add.php
+END
+stock_add.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/ictph/!svn/ver/5/trunk/sgv/application/views/scm/stock_add.php
+END
+create_expiry_report.php
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/ictph/!svn/ver/111/trunk/sgv/application/views/scm/create_expiry_report.php
+END
+receive_invoice.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/ictph/!svn/ver/357/trunk/sgv/application/views/scm/receive_invoice.php
+END
+org_add.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/ictph/!svn/ver/373/trunk/sgv/application/views/scm/org_add.php
+END
+create_maintenance_log_report.php
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/ictph/!svn/ver/279/trunk/sgv/application/views/scm/create_maintenance_log_report.php
+END
+invoice_consumption_add.php
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/ictph/!svn/ver/373/trunk/sgv/application/views/scm/invoice_consumption_add.php
+END
+create_inventory_cost_report.php
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/ictph/!svn/ver/111/trunk/sgv/application/views/scm/create_inventory_cost_report.php
+END
+invoice_add.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/ictph/!svn/ver/373/trunk/sgv/application/views/scm/invoice_add.php
+END
+create_variance_report.php
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/ictph/!svn/ver/117/trunk/sgv/application/views/scm/create_variance_report.php
+END
+reconcile_stock.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/ictph/!svn/ver/342/trunk/sgv/application/views/scm/reconcile_stock.php
+END
+show_order.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/ictph/!svn/ver/368/trunk/sgv/application/views/scm/show_order.php
+END
+list_maintenance.php
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/ictph/!svn/ver/283/trunk/sgv/application/views/scm/list_maintenance.php
+END
+receive_order.php
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/ictph/!svn/ver/373/trunk/sgv/application/views/scm/receive_order.php
+END
+physical_stock.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/ictph/!svn/ver/352/trunk/sgv/application/views/scm/physical_stock.php
+END
+get_stock.php
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/ictph/!svn/ver/373/trunk/sgv/application/views/scm/get_stock.php
+END
+external_order_details.php
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/ictph/!svn/ver/357/trunk/sgv/application/views/scm/external_order_details.php
+END
+order_add.php
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/ictph/!svn/ver/369/trunk/sgv/application/views/scm/order_add.php
+END
+generic_add.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/ictph/!svn/ver/305/trunk/sgv/application/views/scm/generic_add.php
+END
+invoice_list.php
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/ictph/!svn/ver/352/trunk/sgv/application/views/scm/invoice_list.php
+END
+home.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/ictph/!svn/ver/373/trunk/sgv/application/views/scm/home.php
+END
+expiry_add.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/ictph/!svn/ver/374/trunk/sgv/application/views/scm/expiry_add.php
+END
+consumable_center_expiry.php
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/ictph/!svn/ver/375/trunk/sgv/application/views/scm/consumable_center_expiry.php
+END
+product_add.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/ictph/!svn/ver/312/trunk/sgv/application/views/scm/product_add.php
+END

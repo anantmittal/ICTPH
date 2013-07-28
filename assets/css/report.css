@@ -1,0 +1,38 @@
+@charset "utf-8";
+/* BEING USED BY ALL THE REPORTS*/
+
+
+/* #rep_mail is for main size of the page, excluding footer and header.*/
+#rep_main{
+	width:1153px;
+	height: 850px;
+	margin:10px auto;
+	min-height:261px;
+
+}
+
+/* #rep_leftcol is for the chart*/
+#rep_leftcol{
+	width:400px;
+	margin:0 10px;
+	height:auto;
+	float:left;
+}
+
+/* #rep_rightcol is not being used by any content, it can be used when we want to display something with the chart*/
+#rep_rightcol{
+	width:500px;
+	height:auto;
+	float:right;
+}
+
+
+/* .button_wrapper is being used report features and report options*/
+.button_wrapper {
+    display: inline-block;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+
+
+

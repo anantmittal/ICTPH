@@ -1,0 +1,563 @@
+
+<script src="<?php echo base_url();?>assets/js/mne/pisp_adult.js"></script>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+<script>
+	$(document)
+			.ready(
+					function() {
+								$.ajax({	type : "GET",
+											url : "<?php echo base_url()."index.php/plsp/queryhhform/get_all_svg";?>",
+											dataType : "html",
+											success : function(txt)
+											{
+												var editselect = $('#svg');
+												editselect.append(txt);
+											}
+										});
+								});
+</script>
+
+<input name="start_time" id="start_time" type="hidden" />
+<!-- - changed from server side time keeping to client side time keeping - see pisp_adult.js-->
+<input name="end_time" id="end_time" type="hidden" />
+
+<input type="hidden" name="table_name" value="pisp_adult" />
+<br>
+<table width=100>
+	<tr>
+		<td><b>Name</b></td>
+		<td><input name="name" id="name" type="text" size="100"
+			value="<?php if(isset($name))echo $name;?>" /></td>
+	</tr>
+	<!-- tr> <td><b>SVG Code</b></td><td><input name="svg" id="svg" type="text" size="11"/></td></tr -->
+
+	<tr>
+		<td><b>Nurse's Code</b></td>
+		<td><select name="svg" id="svg">
+		</select></td>
+	</tr>
+
+	<tr>
+		<td><b>Adult ID</b></td>
+		<td><input name="adult_id" id="adult_id" type="text" size="20"
+			value="<?php if(isset($org_id))echo $org_id;?>" /></td>
+	</tr>
+	<tr>
+		<td><b>Date of interview</b></td>
+		<td><input name="date_interview" id="datepicker" type="text"
+			size="10" class="datepicker" value="<?php echo date('d/m/Y');?>" /></td>
+	</tr>
+	<tr>
+		<td><b>Gender</b></td>
+		<td><select name="gender" id="gender">
+				<option value="f" onclick="OnEnableDisable(femaleCtrls);" <?php if($gender =='F') echo 'selected="selected"';?>>Female</option>
+				<option value="m" onclick="OnEnableDisable(maleCtrls);" <?php if($gender =='M') echo 'selected="selected"';?>>Male</option>
+				<option value="o" onclick="OnEnableDisable(otherGenderCtrls);">Other</option>
+		</select></td>
+	</tr>
+	<tr>
+		<td><b>Date of birth (dd/mm/yyyy)</b></td>
+		<td><input name="dob" id="dob" type="text" size="10"
+			value="<?php if(isset($dob))echo $dob;?>" onChange = "age_requirement();" /></td>
+	</tr>
+	<tr>
+		<td><b>Highest education completed?</b></td>
+		<td><select name="education" id="education">
+				<option	value="0">0; &lt;5</option>
+				<option value="1">10</option>
+				<option value="2">12</option>
+				<option value="3">UG</option>
+				<option value="4">PG</option></select></td>
+	</tr>
+	<tr>
+		<td><b>Currently studying?</b></td>
+		<td><select name="school" id="school"><option value="n">No</option>
+				<option value="y">Yes</option></select></td>
+	</tr>
+
+	<tr>
+		<td><b>Marital status</b></td>
+		<td><select name="marital" id="marital"><option
+					value="1"
+					onclick="OnEnableDisable(indexToggle(0,marriedfields,1));">Married</option>
+				<option value="2"
+					onclick="OnEnableDisable(indexToggle(0,marriedfields,1));">Widowed</option>
+				<option value="3"
+					onclick="OnEnableDisable(indexToggle(0,marriedfields,1));">Divorced</option>
+				<option value="4"
+					onclick="OnEnableDisable(indexToggle(0,marriedfields,1));">Separated</option>
+				<option value="5"
+					onclick="OnEnableDisable(indexToggle(0,marriedfields,1));">Deserted</option>
+				<option value="6"
+					onclick="OnEnableDisable(indexToggle(0,marriedfields,3));">Never
+					married</option></select></td>
+	</tr>
+	<tr>
+		<td><b>Occupation</b></td>
+		<td><select name="occupation" id="occupation"><option
+					value="1">Daily wage on other people's land</option>
+				<option value="2">Cultivation on own land</option>
+				<option value="3">Manual labour</option>
+				<option value="4">Self-employed non-farm work</option>
+				<option value="5">Government worker</option>
+				<option value="6">Non-government worker</option>
+				<option value="7">Student</option>
+				<option value="8">Homemaker</option>
+				<option value="9">Retired</option>
+				<option value="10">Unemployed (able to work)</option>
+				<option value="11">Unemployed (unable to work)</option></select></td>
+	</tr>
+
+
+
+	<tr>
+		<td><b>Personal illnesses</b></td>
+		<td><input name="personal_illness_nos" id="personal_illness_nos"
+			type="hidden" value="6" />
+			<table border="1">
+				<tr>
+					<td>SN</td>
+					<td></td>
+					<td>Has a healthcare provider ever told you that you have?</td>
+					<td>Did you have surgery for this?</td>
+					<td>Any non-surgical treatment received?</td>
+				</tr>
+				<tr>
+					<td>1.</td>
+					<td>Heart disease:</td>
+					<input name="personal_illness_label_value0"
+						id="personal_illness_label_value0" type="hidden" value="1" />
+					<td><select name="personal_illnesspisp_chronic_conditions0"
+						id="personal_illnesspisp_chronic_conditions0"><option
+								value="n"
+								onclick="OnEnableDisable(indexToggle(0,personalillness,3));">No</option>
+							<option value="y"
+								onclick="OnEnableDisable(indexToggle(0,personalillness,1));">Yes</option>
+							<option value="d">Don't know</option></select></td>
+					<td><select name="personal_illnesspisp_chronic_surgery0"
+						id="personal_illnesspisp_chronic_surgery0" disabled="disabled"><option
+								value="y">Yes</option>
+							<option value="n">No</option></select></td>
+					<td><select name="personal_illnesspisp_chronic_nonsurgical0"
+						id="personal_illnesspisp_chronic_nonsurgical0" disabled="disabled"><option
+								value="y">Yes</option>
+							<option value="n">No</option></select></td>
+				</tr>
+				<tr>
+					<td>2.</td>
+					<td>High BP:</td>
+					<input name="personal_illness_label_value1"
+						id="personal_illness_label_value1" type="hidden" value="2" />
+					<td><select name="personal_illnesspisp_chronic_conditions1"
+						id="personal_illnesspisp_chronic_conditions1">
+							<option	value="n" onclick="OnEnableDisable(indexToggle(1,personalillness,3));">No</option>
+							<option value="y" onclick="OnEnableDisable(indexToggle(1,personalillness,1));">Yes</option>
+							<option value="d">Don't know</option></select></td>
+					<td><select name="personal_illnesspisp_chronic_surgery1"
+						id="personal_illnesspisp_chronic_surgery1" disabled="disabled"><option
+								value="y">Yes</option>
+							<option value="n">No</option></select></td>
+					<td><select name="personal_illnesspisp_chronic_nonsurgical1"
+						id="personal_illnesspisp_chronic_nonsurgical1" disabled="disabled"><option
+								value="y">Yes</option>
+							<option value="n">No</option></select></td>
+				</tr>
+				<tr>
+					<td>3.</td>
+					<td>Diabetes / High blood sugar:</td>
+					<input name="personal_illness_label_value2"
+						id="personal_illness_label_value2" type="hidden" value="3" />
+					<td><select name="personal_illnesspisp_chronic_conditions2"
+						id="personal_illnesspisp_chronic_conditions2"><option
+								value="n"
+								onclick="OnEnableDisable(indexToggle(2,personalillness,3));">No</option>
+							<option value="y"
+								onclick="OnEnableDisable(indexToggle(2,personalillness,1));">Yes</option>
+							<option value="d">Don't know</option></select></td>
+					<td><select name="personal_illnesspisp_chronic_surgery2"
+						id="personal_illnesspisp_chronic_surgery2" disabled="disabled"><option
+								value="y">Yes</option>
+							<option value="n">No</option></select></td>
+					<td><select name="personal_illnesspisp_chronic_nonsurgical2"
+						id="personal_illnesspisp_chronic_nonsurgical2" disabled="disabled"><option
+								value="y">Yes</option>
+							<option value="n">No</option></select></td>
+				</tr>
+				<tr>
+					<td>4.</td>
+					<td>High cholesterol:</td>
+					<input name="personal_illness_label_value3"
+						id="personal_illness_label_value3" type="hidden" value="4" />
+					<td><select name="personal_illnesspisp_chronic_conditions3"
+						id="personal_illnesspisp_chronic_conditions3"><option
+								value="n"
+								onclick="OnEnableDisable(indexToggle(3,personalillness,3));">No</option>
+							<option value="y"
+								onclick="OnEnableDisable(indexToggle(3,personalillness,1));">Yes</option>
+							<option value="d">Don't know</option></select></td>
+					<td><select name="personal_illnesspisp_chronic_surgery3"
+						id="personal_illnesspisp_chronic_surgery3" disabled="disabled"><option
+								value="y">Yes</option>
+							<option value="n">No</option></select></td>
+					<td><select name="personal_illnesspisp_chronic_nonsurgical3"
+						id="personal_illnesspisp_chronic_nonsurgical3" disabled="disabled"><option
+								value="y">Yes</option>
+							<option value="n">No</option></select></td>
+				</tr>
+				
+				<tr>
+					<td>5.</td>
+					<td>Tuberculosis:</td>
+					<input name="personal_illness_label_value4"
+						id="personal_illness_label_value4" type="hidden" value="7" />
+					<td><select name="personal_illnesspisp_chronic_conditions4"
+						id="personal_illnesspisp_chronic_conditions4"><option
+								value="n"
+								onclick="OnEnableDisable(indexToggle(4,personalillness,3));">No</option>
+							<option value="y"
+								onclick="OnEnableDisable(indexToggle(4,personalillness,1));">Yes</option>
+							<option value="d">Don't know</option></select></td>
+					<td><select name="personal_illnesspisp_chronic_surgery4"
+						id="personal_illnesspisp_chronic_surgery4" disabled="disabled"><option
+								value="y">Yes</option>
+							<option value="n">No</option></select></td>
+					<td><select name="personal_illnesspisp_chronic_nonsurgical4"
+						id="personal_illnesspisp_chronic_nonsurgical4" disabled="disabled"><option
+								value="y">Yes</option>
+							<option value="n">No</option></select></td>
+				</tr>
+				<tr>
+					<td>6.</td>
+					<td>Cancer:</td>
+					<input name="personal_illness_label_value7"
+						id="personal_illness_label_value7" type="hidden" value="8" />
+					<td><select name="personal_illnesspisp_chronic_conditions5"
+						id="personal_illnesspisp_chronic_conditions5"><option
+								value="n"
+								onclick="OnEnableDisable(indexToggle(5,personalillness,3));">No</option>
+							<option value="y"
+								onclick="OnEnableDisable(indexToggle(5,personalillness,1));">Yes</option>
+							<option value="d">Don't know</option></select></td>
+					<td><select name="personal_illnesspisp_chronic_surgery5"
+						id="personal_illnesspisp_chronic_surgery5" disabled="disabled"><option
+								value="y">Yes</option>
+							<option value="n">No</option></select></td>
+					<td><select name="personal_illnesspisp_chronic_nonsurgical5"
+						id="personal_illnesspisp_chronic_nonsurgical5" disabled="disabled"><option
+								value="y">Yes</option>
+							<option value="n">No</option></select></td>
+				</tr>
+			</table></td>
+	</tr>
+	<tr>
+		<td><b>Family history</b></td>
+		<td><input name="family_history_nos" id="family_history_nos"
+			type="hidden" value="10" />
+		<table border="1">
+				<tr>
+					<td>SN</td>
+					<td></td>
+					<td>Conditions</td>
+				</tr>
+				<tr>
+					<td>1.</td>
+					<td>Heart disease:</td>
+					<input name="family_history_label_value0"
+						id="family_history_label_value0" type="hidden" value="1" />
+					<td><select name="family_historypisp_familyconditions0"
+						id="family_historypisp_familyconditions0"><option
+								value="n">No</option>
+							<option value="y">Yes</option>
+							<option value="d">Don't know</option></select></td>
+				</tr>
+				<tr>
+					<td>2.</td>
+					<td>High BP:</td>
+					<input name="family_history_label_value1"
+						id="family_history_label_value1" type="hidden" value="2" />
+					<td><select name="family_historypisp_familyconditions1"
+						id="family_historypisp_familyconditions1"><option
+								value="n">No</option>
+							<option value="y">Yes</option>
+							<option value="d">Don't know</option></select></td>
+				</tr>
+				<tr>
+					<td>3.</td>
+					<td>Diabetes / High blood sugar:</td>
+					<input name="family_history_label_value2"
+						id="family_history_label_value2" type="hidden" value="3" />
+					<td><select name="family_historypisp_familyconditions2"
+						id="family_historypisp_familyconditions2"><option
+								value="n">No</option>
+							<option value="y">Yes</option>
+							<option value="d">Don't know</option></select></td>
+				</tr>
+				<tr>
+					<td>4.</td>
+					<td>High cholesterol:</td>
+					<input name="family_history_label_value3"
+						id="family_history_label_value3" type="hidden" value="4" />
+					<td><select name="family_historypisp_familyconditions3"
+						id="family_historypisp_familyconditions3"><option
+								value="n">No</option>
+							<option value="y">Yes</option>
+							<option value="d">Don't know</option></select></td>
+				</tr>
+				<tr>
+					<td>5.</td>
+					<td>Tuberculosis:</td>
+					<input name="family_history_label_value4"
+						id="family_history_label_value4" type="hidden" value="7" />
+					<td><select name="family_historypisp_familyconditions4"
+						id="family_historypisp_familyconditions4"><option
+								value="n">No</option>
+							<option value="y">Yes</option>
+							<option value="d">Don't know</option></select></td>
+				</tr>
+				<tr>
+					<td>6.</td>
+					<td>Cancer:</td>
+					<input name="family_history_label_value5"
+						id="family_history_label_value5" type="hidden" value="8" />
+					<td><select name="family_historypisp_familyconditions5"
+						id="family_historypisp_familyconditions5"><option
+								value="n">No</option>
+							<option value="y">Yes</option>
+							<option value="d">Don't know</option></select></td>
+				</tr>
+			</table></td>
+	</tr>
+	<tr>
+		<td><b>Sexual and reproductive health</b></td>
+		<td><input name="reproductive_nos" id="reproductive_nos"
+			type="hidden" value="1" />
+		<table border="1">
+				<tr>
+					<td></td>
+					<td>Sexual and reproductive health:</td>
+				</tr>
+				<input name="reproductive_label_value0" id="reproductive_label_value0" type="hidden" value="1" />
+				<tr>
+					<td><b>Have you attained Menopause ?</b></td>
+					<td><select name="reproductivemenopause0"
+						id="reproductivemenopause0" class="pregnancy">
+							<option value="y"
+								onclick="OnEnableDisable(indexToggle(0,menopausefields,3));">Yes</option>
+								<option value="n"
+								onclick="OnEnableDisable(indexToggle(0,menopausefields,1));">No</option></select></td>
+				</tr>
+				<tr>
+					<td><b>Are you currently pregnant?</b></td>
+					<td><select name="reproductivepregnant0"
+						id="reproductivepregnant0" disabled="disabled">
+							<option value="n" onclick="OnEnableDisable(indexToggle(0,pregnantfields,3));">No</option>
+							<option value="y" onclick="OnEnableDisable(indexToggle(0,pregnantfields,1));">Yes (Refer to RMHC)</option>
+							<option value="d">Don't know</option></select></td>
+				</tr>
+				<tr>
+					<td><b>Are you receiving any antenatal care?</b></td>
+					<td><select name="reproductiveantenatal0"
+						id="reproductiveantenatal0" disabled="disabled">
+							<option	value="n">No</option>
+							<option value="y">Yes</option></select></td>
+				</tr>
+				<tr>
+					<td><b>How many times have you been pregnant?</b></td>
+					<td><input name="reproductivepregnancy_count0"
+						id="reproductivepregnancy_count0" type="text" size="11"
+						class="pregnancy" /></td>
+				</tr>
+				<tr>
+					<td><b>How many children have you delivered?</b></td>
+					<td><input name="reproductivedeliver_count0"
+						id="reproductivedeliver_count0" type="text" size="11"
+						class="pregnancy" /></td>
+				</tr>
+				<tr>
+					<td><b>Have you ever had miscarriages, abortions, or still births?</b></td>
+					<td><select name="reproductivemiscarriage0"
+						id="reproductivemiscarriage0" class="pregnancy"><option
+								value="n"
+								onclick="OnEnableDisable(indexToggle(0,abortionfields,3));">No</option>
+							<option value="y"
+								onclick="OnEnableDisable(indexToggle(0,abortionfields,1));">Yes</option>
+							<option value="d"
+								onclick="OnEnableDisable(indexToggle(0,abortionfields,3));">Don't
+								know</option></select></td>
+				</tr>
+				<tr>
+					<td><b>How many miscarriages, abortions, or stillbirths
+							have you had?</b></td>
+					<td><input name="reproductivemiscarriage_count0"
+						id="reproductivemiscarriage_count0" type="text" size="11"
+						disabled="disabled" /></td>
+				</tr>
+				<tr>
+					<td><b>Do you use any contraception methods?</b></td>
+					<td><select name="reproductivecontraception_use0"
+						id="reproductivecontraception_use0"><option value="y">Yes</option>
+							<option value="n">No</option></select></td>
+				</tr>
+			</table></td>
+	</tr>
+	<tr>
+		<td><b>Smoking habits</b></td>
+		<td><input name="smoking_nos" id="smoking_nos" type="hidden"
+			value="1" />
+		<table border="1">
+				<tr>
+					<td><b>Smoking Habits</b></td>
+					<td></td>
+				</tr>
+				<input name="smoking_label_value0" id="smoking_label_value0" type="hidden" value="1" />
+
+				<tr>
+					<td><b>Do you currently chew tobacco?</b></td>
+					<td><select name="smokingtobacco_current0"><option
+								value="n">No</option>
+							<option value="y">Yes</option></select></td>
+				</tr>
+				<tr>
+					<td><b>Do you currently smoke Cigarettes/ Bidi?</b></td>
+					<td><select name="smokingsmoking_current0"><option
+								value="n">No</option>
+							<option value="y">Yes</option></select></td>
+				</tr>
+			</table></td>
+	</tr>
+	<tr>
+		<td><b>Alcohol consumption</b></td>
+		<td><input name="alcohol_nos" id="alcohol_nos" type="hidden"
+			value="1" />
+		<table border="1">
+				<tr>
+					<td>SN</td>
+					<td></td>
+					<td>Do you currently consume alcohol?</td>
+				</tr>
+				<tr>
+					<td>1.</td>
+					<td>Alcohol consumption:</td>
+					<input name="alcohol_label_value0" id="alcohol_label_value0"
+						type="hidden" value="1" />
+					<td><select name="alcoholalcohol_current0"
+						id="alcoholalcohol_current0"><option value="n">No</option>
+							<option value="y">Yes</option></select></td>
+				</tr>
+			</table></td>
+	</tr>
+
+	<tr>
+		<td><b>Height in cms</b><span style="color:#FF0000">*</span></td>
+		<td><input name="height" id="height" type="text" size="11" /> cm</td>
+	</tr>
+	<tr>
+		<td><b>Weight in kgs</b><span style="color:#FF0000">*</span></td>
+		<td><input name="weight" id="weight" type="text" size="11" /> kg</td>
+	</tr>
+	<tr>
+		<td><b>Waist circumference in cms</b><span style="color:#FF0000">*</span></td>
+		<td><input name="wc" id="wc" type="text" size="11" /> cm</td>
+	</tr>
+	<tr>
+		<td><b>Hip circumference in cms</b><span style="color:#FF0000">*</span></td>
+		<td><input name="hc" id="hc" type="text" size="11" /> cm</td>
+	</tr>
+
+	<tr>
+		<td><b>Visual Acuity</b></td>
+		<td><table border = "1">
+				<tr>
+					<td><b>Distance vision (Right)</b></td>
+					<td><select name="va_distance_r" id="va_distance_r"><option
+								value="0">Not Measured</option>
+							<option value="1">&lt;6/60</option>
+							<option value="2">6/60</option>
+							<option value="3">6/24</option>
+							<option value="4">6/12</option>
+							<option value="5">6/6</option></select></td>
+				</tr>
+				<tr>
+					<td><b>Distance vision (Left)</b></td>
+					<td><select name="va_distance_l" id="va_distance_l">
+							<option	value="0">Not Measured</option>
+							<option value="1">&lt;6/60</option>
+							<option value="2">6/60</option>
+							<option value="3">6/24</option>
+							<option value="4">6/12</option>
+							<option value="5">6/6</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td><b>Near vision</b></td>
+					<td><select name="va_near" id="va_near">
+							<option	value="0">Not Measured</option>
+							<option value="1">Normal</option>
+							<option value="2">&lt;+1.0</option>
+							<option value="3">&lt;+2.0</option>
+							<option value="4">&lt;+3.0</option>
+							<option value="5">&gt;+3.0</option>
+					</select></td>
+				</tr>
+			</table></td>
+	</tr>
+
+	<tr>
+		<td><b>Oral Hygiene</b></td>
+		<td><table border="1">
+				<tr>
+					<td><b>What material do you use for cleaning your teeth?</b></td>
+					<td><select name="oh_material" id="oh_material"><option
+								value="0">Don't Know</option>
+							<option value="1">Tooth paste</option>
+							<option value="2">Tooth powder</option>
+							<option value="3">Brick powder</option>
+							<option value="4">Neem stick</option></select></td>
+				</tr>
+				<tr>
+					<td><b>How many times do you brush daily?</b></td>
+					<td><select name="oh_frequency" id="oh_frequency"><option
+								value="0">Don't know</option>
+							<option value="1">Once</option>
+							<option value="2">Twice</option>
+							<option value="3">After every meal</option></select></td>
+				</tr>
+			</table></td>
+	</tr>
+
+
+	<tr>
+		<td><b>Vision Consent</b></td>
+		<td><table>
+				<tr>
+					<td><b>Do you want your eye power to be checked by the Physician ?</b></td>
+					<td>&nbsp &nbsp<input name="vision_exam_consent"
+						type="checkbox" value="y"><b> YES </b>
+					</td>
+				</tr>
+			</table></td>
+	</tr>
+	<tr>
+		<td><b>VIA/VILI Consent</b></td>
+		<td><table>
+				<tr>
+					<td><b>Has the women signed consent for the VIA/VILI examination ?</b></td>
+					<td>&nbsp &nbsp<input name="via_vili_consent" class = "genderfemale" type="checkbox" id ="via_vili_consent0"
+						value="y" disabled = "disabled" ><b> YES </b>
+					</td>
+				</tr>
+			</table></td>
+	</tr>
+
+</table>
+<?php echo '<script type="text/javascript">';
+	if($gender == 'M')
+		echo 'OnEnableDisable(maleCtrls);';
+	else
+	{
+		echo 'OnEnableDisable(femaleCtrls);';
+		echo 'age_requirement();';
+	}
+	echo '</script>';
+?>

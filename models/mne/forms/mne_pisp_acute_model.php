@@ -1,0 +1,1 @@
+<?php class mne_pisp_acute_model extends IgnitedRecord {}

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/user
+END
+role_right_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/ictph/!svn/ver/27/trunk/sgv/application/models/user/role_right_model.php
+END
+user_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/user/user_model.php
+END
+role_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/ictph/!svn/ver/9/trunk/sgv/application/models/user/role_model.php
+END
+users_role_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/ictph/!svn/ver/9/trunk/sgv/application/models/user/users_role_model.php
+END
+access_domain_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/user/access_domain_model.php
+END

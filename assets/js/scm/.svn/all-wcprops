@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/ictph/!svn/ver/375/trunk/sgv/assets/js/scm
+END
+consumable_expire.js
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/ictph/!svn/ver/375/trunk/sgv/assets/js/scm/consumable_expire.js
+END
+add_scm_item.js
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/ictph/!svn/ver/374/trunk/sgv/assets/js/scm/add_scm_item.js
+END
+add_stock_item.js
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/ictph/!svn/ver/5/trunk/sgv/assets/js/scm/add_stock_item.js
+END
+expire_scm_item.js
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/ictph/!svn/ver/316/trunk/sgv/assets/js/scm/expire_scm_item.js
+END
+receive_order.js
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/ictph/!svn/ver/373/trunk/sgv/assets/js/scm/receive_order.js
+END
+physical_stock.js
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/ictph/!svn/ver/352/trunk/sgv/assets/js/scm/physical_stock.js
+END

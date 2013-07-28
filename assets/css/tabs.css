@@ -1,0 +1,26 @@
+#tabs {
+        display: block;
+        float: left;
+        width: 100%;
+      }      
+      a.tab { 
+        border-collapse: collapse; 
+        border-style: solid solid none solid;  
+        border-color: black; 
+        border-width: 1px 1px 0px 1px; 
+        background-color: silver;         
+        font-family: arial; 
+        text-decoration: none;
+        float: left;        
+      }
+      a.tab:hover { 
+        border-color: black; 
+        background-color: white; 
+      }
+      .panel { 
+      background-color:#FFF;
+	  border:2px solid #7ecfe9;
+	  padding:15px;
+      float:left;
+      width:670px;
+      overflow: auto;}

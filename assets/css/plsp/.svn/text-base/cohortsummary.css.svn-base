@@ -1,0 +1,24 @@
+tr.second{ 
+	background-color:#EEEEEE;
+	}
+
+td.risk0{ 
+	background-color:#CCFF99;
+	text-align: center;
+	}
+td.risk1{ 
+	background-color:#FFFFCC;
+	text-align: center;
+	}
+td.risk2{ 
+	background-color:#FFCC99;
+	text-align: center;
+	}
+td.risk3{ 
+	background-color:#FF3333;
+	text-align: center;
+	}
+td.risk4{ 
+	background-color:#FF3333;
+	text-align: center;
+	}

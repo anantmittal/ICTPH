@@ -1,0 +1,180 @@
+<?php
+class visit_model extends IgnitedRecord {
+  var $belongs_to = array("person", "provider", "provider_location");
+  var $has_many = array("visit_ros_entries", "visit_test_entries",
+			"visit_physical_exam_entries","visit_protocol_information_entries",
+			"visit_medication_entries", "visit_referral_entries",
+			"visit_cost_item_entries", "visit_diagnosis_entries",
+			"visit_procedure_entries", "visit_immunization_entries","lab_orders", "visit_addendums", "followup_informations",
+			"visit_opdproduct_entries","visit_service_entries");
+  // While visits "has_one" pregnancy_update and pregnancy, these should
+  // be accessed via the visit_obstetric_record
+  var $has_one = array("visit_obstetric_record", "pregnancy_update","visit_vitals",
+		       "pediatric_update", "visit_auscults", "visit_visuals","visit_visual_prescriptions",);
+
+  // Not adding the following relationships since the use is not clear yet
+  // illness, medications, lab_orders, immunization
+
+	function count_for_person_id($id)
+	{
+		$rec = $this->find_by_sql('select count(*) as count from visits where person_id='.$id);
+		return $rec->count;
+	}
+	function get_basic_details_for_last_two_visits($person_id)
+	{
+		$this->CI_handle =& get_instance();
+		$this->CI_handle->load->model('opd/visit_diagnosis_entry_model', 'diagnosis');
+		if(!$recs=$this->find_all_by_sql("select * from visits where person_id like '$person_id' and (type like 'General' or type like 'Followup') and valid_state like 'valid' order by date DESC"))
+		{
+			$visit[0]['chief_complaint']='';
+			$visit[1]['chief_complaint']='';
+			$visit[0]['diagnosis']='';
+			$visit[1]['diagnosis']='';
+			return $visit;
+		}
+		else
+		{	
+			$ctr = 0;
+			
+			foreach($recs as $rec)
+			{	
+				
+				
+				
+						
+				@$diagnosis_entry = $this->CI_handle->diagnosis->find_all_by('visit_id',$rec->id);
+				$visit{$ctr}['diagnosis']='';
+				foreach($diagnosis_entry as $diagnosis)
+					@$visit{$ctr}['diagnosis']= $visit{$ctr}['diagnosis'].",".$diagnosis->diagnosis;
+				@$visit{$ctr}['chief_complaint'] = $rec->chief_complaint;
+				
+				
+				/*@$product_ids = $this->visit_medication_entry->find_all_by('visit_id',$rec->id);
+				foreach($product_ids as $product_id)
+				{
+					@$medication{$ctr}[] = $this->product->find_by('id',$product_id->product_id);
+				}*/
+				
+				
+				if($ctr == 1)  // only last two visit records
+					break;
+				$ctr=$ctr+1;
+			}
+			return $visit;
+		}
+		
+		
+	}
+	
+	
+	function get_all_past_encounters($person_id)
+	{
+		$this->CI_handle =& get_instance();
+		$this->CI_handle->load->model('scm/product_model', 'product');
+		$valid = 'valid';
+		if($visits = $this->where('person_id',$person_id)->where('valid_state',$valid)->order_by('date','DESC')->find_all())
+		{
+			$k = 0;
+			foreach($visits as $v)
+			{
+				//counters for medications, services, opd products and diagnosis
+				$i=0;
+				$j=0;
+				$x=0;
+				$l=0;
+	
+					
+				$medication_entries = $v->related('visit_medication_entries')->get();
+				$diagnosis_entries = $v->related('visit_diagnosis_entries')->get();
+				$service_entries = $v->related('visit_service_entries')->get();
+					
+				$rec{$k}['visit_details']=array('visit_id'=>$v->id,'date'=>$v->date,"chief_complaint"=>$v->chief_complaint);
+				foreach($medication_entries as $m)
+				{
+	
+					if($product = $this->CI_handle->product->find_by('id',$m->product_id))
+					{
+						if($product->product_type == "MEDICATION" || $product->product_type = "UNUSED")
+						{
+							$rec{$k}['medication']{
+								$i}['name'] = $product->name.' ('.$product->generic_name.') ';
+								$rec{$k}['medication']{
+									$i}['dosage']= $product->strength.' '.$product->strength_unit.' '.$product->retail_unit;
+									$rec{$k}['medication']{
+										$i}['frequency']=$m->frequency;
+										$rec{$k}['medication']{
+											$i}['duration']=$m->duration.' '.$m->duration_type;
+											$rec{$k}['medication']{
+												$i}['route']=$m->administration_route;
+												$i=$i+1;
+													
+						}
+						if($product->product_type == "OUTPATIENTPRODUCTS")
+						{
+								
+							$rec{$k}['opd_product']{
+								$j}['name']=$product->name.' ('.$product->generic_name.') ';
+								$j=$j+1;
+						}
+					}
+				}
+				foreach($service_entries as $s)
+				{
+	
+					$rec{$k}['service']{
+						$x}['name']=$s->name;
+						$x=$x+1;
+				}
+				foreach($diagnosis_entries as $d)
+				{
+					$rec{$k}['diagnosis']{
+						$l}['name']=$d->diagnosis;
+						$l=$l+1;
+				}
+	
+				$k=$k+1;
+			}
+				
+			if(isset($rec))
+				return $rec;
+		}
+	
+	}
+	
+	function get_all_diagnostic_tests($person_id)
+	{
+		$this->CI_handle =& get_instance();
+		$this->CI_handle->load->model('opd/test_types_model', 'tests');
+		$valid = 'valid';
+		if($visits = $this->where('person_id',$person_id)->where('valid_state',$valid)->order_by('date','ASC')->find_all())
+		{
+			$k=0;
+			foreach($visits as $v)
+			{
+				if($test_entries = $v->related('visit_test_entries')->get())
+				{
+					$k=$k+1;
+					$date{$k} = $v->date;
+					$visit_ids{$k} =$v->id;
+				}
+					
+				foreach($test_entries as $t)
+				{
+						
+					$test = $this->CI_handle->tests->find_by('id',$t->test_type_id);
+					$test_name = $test->name;
+					$rec{$test_name}{$k} = $t->result;
+						
+						
+				}
+	
+			}
+				
+			if(isset($rec))
+			{
+				$rec = array('diagnostic_tests'=>$rec,'test_dates'=>$date,'visit_ids'=>$visit_ids);
+				return $rec;
+			}
+		}
+	}
+}

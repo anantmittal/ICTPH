@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/ictph/!svn/ver/357/trunk/sgv/application/models/scm
+END
+order_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/ictph/!svn/ver/352/trunk/sgv/application/models/scm/order_model.php
+END
+product_batchwise_stock_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/scm/product_batchwise_stock_model.php
+END
+product_physical_stock_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/scm/product_physical_stock_model.php
+END
+product_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/scm/product_model.php
+END
+transaction_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/ictph/!svn/ver/352/trunk/sgv/application/models/scm/transaction_model.php
+END
+order_invoice_receive_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/ictph/!svn/ver/357/trunk/sgv/application/models/scm/order_invoice_receive_model.php
+END
+drug_generic_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/scm/drug_generic_model.php
+END
+pricelist_name_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/scm/pricelist_name_model.php
+END
+pricelist_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/scm/pricelist_model.php
+END
+physical_reconcile_verification_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/scm/physical_reconcile_verification_model.php
+END
+transaction_item_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/scm/transaction_item_model.php
+END
+expiry_log_detail_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/scm/expiry_log_detail_model.php
+END
+opd_products_order_queue_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/scm/opd_products_order_queue_model.php
+END
+scm_organization_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/ictph/!svn/ver/5/trunk/sgv/application/models/scm/scm_organization_model.php
+END
+drug_brand_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/scm/drug_brand_model.php
+END
+pricelist_scmorg_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/scm/pricelist_scmorg_model.php
+END

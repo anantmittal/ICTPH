@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/ictph/!svn/ver/342/trunk/sgv/assets/js/admin
+END
+quick_registration.js
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/ictph/!svn/ver/5/trunk/sgv/assets/js/admin/quick_registration.js
+END
+add_service.js
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/ictph/!svn/ver/312/trunk/sgv/assets/js/admin/add_service.js
+END
+add_maintenance.js
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/ictph/!svn/ver/283/trunk/sgv/assets/js/admin/add_maintenance.js
+END
+find_test_group.js
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/ictph/!svn/ver/279/trunk/sgv/assets/js/admin/find_test_group.js
+END
+find_user.js
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/ictph/!svn/ver/183/trunk/sgv/assets/js/admin/find_user.js
+END
+user_management_validator.js
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/ictph/!svn/ver/256/trunk/sgv/assets/js/admin/user_management_validator.js
+END
+find_service.js
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/ictph/!svn/ver/279/trunk/sgv/assets/js/admin/find_service.js
+END
+find_role.js
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/ictph/!svn/ver/183/trunk/sgv/assets/js/admin/find_role.js
+END
+find_maintenance.js
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/ictph/!svn/ver/279/trunk/sgv/assets/js/admin/find_maintenance.js
+END
+add_test_group.js
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/ictph/!svn/ver/342/trunk/sgv/assets/js/admin/add_test_group.js
+END

@@ -1,0 +1,99 @@
+<?php
+class person_model extends IgnitedRecord {
+	var $table = "persons";
+  var $belongs_to = "household";
+	function person_model()
+	{
+		parent::IgnitedRecord();
+		$this->CI_handle =& get_instance();
+	}
+
+	function prune_invalid_org_ids(&$strIdList)
+	{
+		$invalid=array();
+		foreach($strIdList as $orgid)
+		{
+			if(!$this->find_by('organization_member_id', $orgid))
+				$invalid[] = $orgid;
+		}
+		return $invalid;
+	}
+
+	function convert_org_id_to_id($arrIds)
+	{
+		$listIds=array();
+		foreach($arrIds as $orgid)
+		{
+			if($rec = $this->find_by('organization_member_id', $orgid))
+				$listIds[]=$rec->id;
+		}
+		return $listIds;
+	}
+	
+	function get_all_hh_for_ids($arr_ids)
+	{
+		$listIds = array();
+		$hhid = array();
+		foreach($arr_ids as $id)
+		{
+			if($rec = $this->find_by('id', $id))
+				$hhid[$rec->household_id]=true;
+		}
+		foreach($hhid as $hh=>$ignore)
+			$listIds[]=$hh;
+		return $listIds;
+	}
+	function get_summary_by_org_id($org_id)
+	{
+		$ret = array();
+		if($rec = $this->find_by('organization_member_id', $org_id))
+		{
+			$ret['name']=$rec->full_name;
+			$ret['org_id']=$rec->organization_member_id;
+			$ret['gender'] = $rec->gender;
+			$ret['dob']=date('d/m/Y', strtotime($rec->date_of_birth));
+		}
+		return $ret;
+	}
+	
+	function create_persons_for_household($hhid, $hhorgid, $indi_arr)
+	{
+		$this->CI_handle->load->helper('soundex');
+		$ctr = 1;
+		$hof = 0;
+		$person_list = array();
+		foreach($indi_arr as $indi)
+		{
+			$person_rec = $this->new_record();
+			$person_rec->full_name = mb_convert_case($indi['name'] ,MB_CASE_TITLE);
+			$person_rec->name_soundex=return_soundex($indi['name'], 'ret_normalized_name_parts');
+			$person_rec->household_id = $hhid;
+			$person_rec->organization_member_id=$hhorgid.sprintf("%02s",$ctr);
+			$person_rec->organization_id = 1;
+			if($indi['gender'] == "male"){
+                $person_rec->gender = "M";
+            }else{
+                $person_rec->gender = "F";
+            }
+			//$person_rec->gender = $indi['gender'];
+			$person_rec->date_of_birth = $indi['dob'];
+			$person_rec->relation = $indi['relation'];
+			if(!($person_rec->save()))
+				return false;
+			//Foreach person create a record in the family table
+			if($person_rec->relation=='self' || $ctr==1)
+				$hof = $person_rec->id;
+			$person_list[]=$person_rec->id;
+			$ctr++;
+		}
+		return array('persons'=>$person_list);
+		
+	}
+	function get_adult_id($person_id)
+	{
+		$person = $this->find_by('id',$person_id);
+		$adult_id = $person->organization_member_id;
+	
+		return $adult_id;
+	}
+}

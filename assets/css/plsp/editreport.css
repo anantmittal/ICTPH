@@ -1,0 +1,15 @@
+td.error{
+	color: red;
+	font-size:12pt;
+}
+
+td.inner{
+	width:45%;
+}
+table.reportouter
+{
+	align:center;
+	width:50%;
+	border:1;
+	cellpadding:3;
+}

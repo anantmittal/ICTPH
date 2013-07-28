@@ -1,0 +1,178 @@
+<?php
+include_once(APPPATH.'libraries/plsp/assessment/assessment_helper.php');
+class mne_pisp_adult_model extends IgnitedRecord {
+	var $table ='mne_pisp_adult';
+	var $idfield = "adult_id";
+	var $datefield = "date_interview";
+	var $subtables = array("mne_pisp_acute_condition", "mne_pisp_personal_illness", "mne_pisp_adult_smoking", "mne_pisp_adult_alcohol", "mne_pisp_reproductive_health","mne_pisp_family_history");
+
+	function mne_pisp_adult_model()
+	{
+		parent::IgnitedRecord();
+		$this->CI_handle =& get_instance();
+	}
+
+	function get_id_for_org_id($org_id)
+	{
+		$ret = false;
+		if($record = $this->find_by($this->idfield,$org_id))
+		{
+			$ret = $record->id;
+		}
+		return $ret;
+	}
+	
+	function get_ids_and_payload_for_org_id($org_id)
+	{
+		$ret = array();
+		if($records = $this->find_all_by($this->idfield,$org_id))
+		{
+			foreach($records as $row)
+				$ret[$row->id] = array($row->date_interview,'adult', '10000');
+		}
+		return $ret;
+	}
+	
+	function get_summary_from_latest_survey($person_org_id, $params)
+	{
+		if(!$this->find_by($this->idfield,$person_org_id))
+			return null;
+		if($record = $this->find_by_sql('select max(id) as id from '.$this->table.' where '.$this->idfield.'="'.$person_org_id.'" and '.$this->datefield.'=(select max('.$this->datefield.') as date from '.$this->table.' where '.$this->idfield.'="'.$person_org_id.'")' ))
+		{
+			if($rec = $this->find_by('id',$record->id))
+			{
+				//compute summary
+				$ret = array();
+				$ret['date']=$rec->{$this->datefield};
+				$date = date('Y-m-d');
+				if($ret['date']== $date) // so that only todays PISP would affect the vision prescription for a patient
+				{
+					$ret['vision_exam_consent']=$rec->vision_exam_consent;
+					$ret['via_vili_consent']=$rec->via_vili_consent;
+				}
+				else 
+				{
+					$ret['vision_exam_consent']='n';
+					$ret['via_vili_consent']='n';
+				}
+				$elapseddays = (strtotime(date("Y-m-d"))-strtotime($ret['date']))/86400;
+				if($elapseddays == 0) //If PISP was done today
+				{
+					/*$bp = explode("/",$rec->bp);
+					if(count($bp)==2)
+					{
+						$ret['systole']=$bp[0];
+						$ret['diastole']=$bp[1];
+					}*/
+					$ret['weight']=$rec->weight;
+					$ret['wc']=$rec->wc;
+					$ret['hc']=$rec->hc;
+					$ret['height']=$rec->height;
+				}
+				
+				if($elapseddays < 180) // If PISP was done less than 6 months ago, then include visual parameters
+				{
+					$ret['va_distance_r']=$rec->va_distance_r;
+					$ret['va_distance_l']=$rec->va_distance_l;
+					$ret['va_near']=$rec->va_near;
+					$ret['va_cataract']=$rec->va_cataract;
+				}
+				
+				$ret['risk']=$this->__calculate_summary($rec, $params);			
+				return $ret;
+			}
+		}
+		return null;
+	}
+
+	function __calculate_summary($record, $params)
+	{
+		$data[$this->table]=$record;
+		$ctr = 0;
+		foreach($this->subtables as $st)
+		{
+			
+			$this->CI_handle->load->model('mne/forms/'.$st.'_model',$st);
+			$data[$st] = $this->CI_handle->{$st}->find_all_by('data_point_id',$record->id);
+		}
+		
+		$assess = new AssessmentHelper($params['config'], $params['dict'], $params['analyzer']);
+		$pispdata = new PispMneAdultRecord();
+		$pispvalues = $pispdata->generate_array($data, $params['person'], NULL, NULL);
+		$pisp_risk = array();
+		
+		$arr_risks = array('risk_whr'=>array('assessWaistHipRatio','WHR'), 					
+				'risk_bp'=>array('assessBloodPressure','BP'),
+				'risk_personal_illness'=>array('assessChronicConditions','Personal illness'), 
+				'risk_bmi'=>array('assessBmi','BMI') , 
+				'risk_alcohol'=>array('assessAlcoholDependence','Alcohol'), 
+				'risk_smoking'=>array('assessNicotineDependence','Nicotine dependence'), 
+				'risk_tobacco'=>array('assessChewingTobaccoDependence','Tobacco chewing'), 
+				'risk_cvd'=>array('assessCVDRisks','CVD Risks'), 
+				'risk_pregnant'=>array('assessPregnancy','Pregnant'));
+
+		foreach($arr_risks as $k=>$display_text)
+		{
+			$func = $display_text[0];
+			$assess_result = $assess->{$func}($pispvalues);
+			if($assess_result['assess_flag']>=2) //then there's an error
+			{
+				if(array_key_exists('short_assess',$assess_result))
+				{
+					$pisp_risk[$k] = array($display_text[1],$assess_result['short_assess']);
+				}
+			}
+		}
+		return $pisp_risk;
+	}
+
+	function delete_response($id,$db)
+	{
+		$db->trans_begin();
+		$status = true;
+		if($main_rec = $this->find($id))
+		{
+			foreach($this->subtables as $sub)
+			{
+				$status = $status AND $db->query('delete from '.$sub.' where data_point_id='.$main_rec->id);
+			}
+			$status = $status AND $main_rec->delete();
+		}
+		
+		if($status)
+			$db->trans_commit();
+		else
+			$db->trans_rollback();
+		return $status;
+	}
+	
+	function get_family_history($organization_member_id)
+	{
+		if($pisp = $this->find_by('adult_id',$organization_member_id))  //takes care of only the last PISP
+		{
+			$k=0;
+			$this->CI_handle =& get_instance();
+			$this->CI_handle->load->model('mne/forms/mne_pisp_family_history_model', 'family_hist');
+				
+			$family_histories = $this->CI_handle->family_hist->find_all_by('data_point_id',$pisp->id);
+	
+			foreach($family_histories as $family_history)
+			{
+					
+				if($family_history->pisp_familyconditions == 'y')
+				{
+					$history{$k} = $family_history->label_value;
+	
+					if(array_key_exists($history{$k},$this->family_hist_array))
+						$history{$k} = $this->family_hist_array{$history{$k}
+					};
+						
+					$k=$k+1;
+				}
+			}
+			if(isset($history))
+				return $history;
+		}
+	
+	}
+}

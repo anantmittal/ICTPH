@@ -1,0 +1,156 @@
+@media print{
+	body { 
+		color : #000000; 
+		background : #ffffff; 
+		'font-family : "Times New Roman", Times, serif;
+		font-size : 11pt; 
+		width:95%; 
+
+	}
+}
+@media screen{
+	body { 
+		color : #000000; 
+		background : #ffffff; 
+		'font-family : "Times New Roman", Times, serif;
+		font-size : 12pt; 
+		width:60%; 
+
+	}
+}
+
+@media print{
+	div#print-footer{
+		display: block; 
+		position: fixed; bottom: 0;
+		font-size:7pt;
+		width:95%; 
+		text-align: justify;
+	}
+}
+@media screen{
+	div#print-footer{
+		display: none; 
+		position: fixed; bottom: 0;
+		font-size:9pt;
+		width:95%; 
+		text-align: justify;
+	}
+}
+#plsppageframe{
+	display:block;
+	width:100%; 
+	'border:1px solid black;
+	'height: 90%;
+	page-break-inside:avoid;
+	page-break-after: always;
+}
+h1{
+	text-align:center;
+	font-size:20pt;
+}
+h3{
+	text-align:center;
+	font-size:12pt;
+}
+#plspheadercenter{
+	width: 60%;
+	font-size: 14pt;
+	float: left;
+	text-align:center;
+}
+#plspheaderleft { 
+	width: 20%;  
+	float: left;
+	text-align:left;
+}
+#plspheaderright { 
+	width: 20%; 
+	float: left;
+	text-align: right;
+}
+
+#plspintro {
+	text-align: justify;
+	font-size : 11pt;
+}
+#plsperror{
+	text-align: center;
+	font-size: 32pt;	
+}
+td.emptycell
+{
+	width:70px;
+}
+table.intro
+{
+	border-width: 0px;
+	border-spacing: 0px;
+	border-style: none;
+}
+td.imagecell
+{
+	vertical-align: top;
+}
+table, caption
+{
+	width:100%; 
+	border:1px solid black;
+	page-break-inside:avoid;
+}
+th
+{
+	background-color:#b0c4de;
+	color:black;
+}
+caption
+{
+	font-size : 15pt;
+	text-align:left;
+	background-color:#b0c4de;
+}
+.keycell
+{
+	width:20%;
+	border:1px solid black;
+}
+.valuecell
+{
+	width:70%;
+	border:1px solid black;
+	font-size : 11pt;
+}
+.labelcell
+{
+	width:25%;
+	border:1px solid black;
+}
+.eyevaluecell
+{
+	width:15%;
+	border:1px solid black;
+}
+.assesscell
+{
+	width:60%;
+	border:1px solid black;
+}
+td.vaccinecell
+{
+	width:20%;
+	border:1px solid black;
+}
+
+.reportedcell
+{
+	width:20%;
+	border:1px solid black;
+}
+
+
+.assesscell
+{
+	width:60%;
+	border:1px solid black;
+}
+

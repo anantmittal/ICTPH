@@ -1,0 +1,22 @@
+<?php
+class opd_diagnosis_model extends IgnitedRecord {
+	
+	var $table = "opd_diagnosis";
+	function check_duplicate($value, $system_name) {
+		return $opd_diagnosis_rec = $this->find_by_sql("SELECT * from opd_diagnosis where system_name=\"$system_name\" and value=\"$value\"");
+		
+	}
+
+	function save_value($addedValue1, $systemName) {
+		$value = $this->new_record();
+		$value->value = strtolower($addedValue1);
+		$value->system_name = $systemName;
+		return $value->save();
+	}
+	
+	function save_system($systemName) {
+		$value = $this->new_record();
+		$value->system_name = $systemName;
+		return $value->save();
+	}
+}

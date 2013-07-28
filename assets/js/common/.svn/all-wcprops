@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/ictph/!svn/ver/380/trunk/sgv/assets/js/common
+END
+local_autocomplete.js
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/ictph/!svn/ver/380/trunk/sgv/assets/js/common/local_autocomplete.js
+END
+header_search.js
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/ictph/!svn/ver/357/trunk/sgv/assets/js/common/header_search.js
+END
+user_autocomplete.js
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/ictph/!svn/ver/312/trunk/sgv/assets/js/common/user_autocomplete.js
+END
+opd_product_autocomplete.js
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/ictph/!svn/ver/375/trunk/sgv/assets/js/common/opd_product_autocomplete.js
+END

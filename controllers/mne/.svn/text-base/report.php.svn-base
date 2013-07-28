@@ -1,0 +1,217 @@
+<?php
+class report extends CI_Controller {
+	public  $form_data = array();
+
+	function index() {
+		echo 'index function';
+	}
+
+
+	function define() {
+
+		if(!$_POST) {
+
+			$tables = $this->db->list_tables();
+			$tables_arr = array();
+
+			foreach ($tables as $table) {
+				$tables_arr[$table] = $table;
+			}
+			$this->form_data['tables'] = $tables_arr;
+
+//			$tables = array('test_table1'=>'test_table1', 'test_table2'=>'test_table2', 'test_table3'=>'test_table3');
+//			$this->form_data['tables'] = $tables;
+
+			$data = array();
+
+			foreach ($tables as $key=>$table ) {
+				$fields = $this->table_fields(true, $table);
+				foreach ( $fields as $field) {
+					$con_field    = $table.'.'.$field;
+					$fields_arr[$con_field] = $con_field;
+				}
+			}
+			$this->form_data['fields'] = $fields_arr;
+
+			$this->load->view('mne/define_report', $this->form_data);
+			return ;
+		}
+
+		$this->load->library('mne/report_builder', 'report_builder');
+		$form_data['name'] = $this->input->post('name');
+		$form_data['author'] = $this->input->post('author');
+
+		$form_data['body']['schema_data'] = $this->input->post('schema_data');
+		$form_data['body']['conditions'] = $this->input->post('conditions');
+
+//		$this->report_builder->save($form_data); // it will save report_definition in table's body field
+		$this->report_builder->save($form_data, true); // it will save report_definition in file and store
+													   //file name in table's file_name field
+	}
+
+
+
+	function add_permission($report_id = '') {
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('username', 'Username', 'required');
+		$this->form_validation->set_rules('id', 'Report Name by autocomplete', 'required');
+
+		if(!$_POST || $this->form_validation->run() == FALSE) {
+			$this->load->model('mne/report_model', 'report');
+
+			if($report_id != '') {
+				$report = $this->report->find($report_id);
+
+				if(!$report) {
+					echo 'Report id is Invalid'	;
+					return ;
+				}
+
+				$this->form_data['report_id']   = $report->id;
+				$this->form_data['report_name'] = $report->name;
+			}
+
+			$this->load->view('mne/add_report_permission', $this->form_data);
+			return ;
+		}
+
+
+		$this->load->model('mne/reports_permission_model','permission');
+		$name               = $this->input->post('name');
+		$data['report_id']  = $this->input->post('id');
+		$data['username']   = $this->input->post('username');
+
+		$permission = $this->permission->new_record($data);
+		$result     = $permission->save();
+
+		if($result) {
+			echo 'New permission added for report : "'.$name.'"';
+		} else  {
+			echo 'Some problem occured while saving the data in database';
+		}
+
+	}
+
+
+
+	function generate($report_id = '') {
+		if($report_id != '') {
+			$this->load->library('mne/report_builder', 'report_builder');
+			$report = $this->report_builder->load($report_id);
+
+			if(!$report) {
+				echo 'Report id is Invalid'	;
+				return ;
+			}
+
+			$data = $report['data'];
+			$report_arr = json_decode($data, true);
+
+			echo '<pre>';
+			print_r($report_arr);
+			echo '</pre>';
+
+			$aggr_fun_str = '';
+			$join_col_str = '';
+			$group_by_str = '';
+			foreach ($report_arr['schema_data'] as $table_name=>$table_arr) {
+//				echo '<br>'. $table_name;
+
+				foreach ($table_arr as $field_name => $field_data) {
+
+					if(isset($field_data['aggr_fun'])) {
+						//aggregate function
+//						echo '<br> Field : '.$field_name.'             Fun : '.$field_data['aggr_fun'];
+						if ($field_data['aggr_fun'] != 'false') {
+							$aggr_fun_str .= $field_data['aggr_fun'] .'('.$table_name.'.'.$field_name.')'.',';
+						} else  {
+							$aggr_fun_str .= ','.$field_name;
+						}
+
+					} elseif(isset($field_data['join_column'])) {
+						//join column with  "$table_name.$field_name"
+						$join_col_str .= $table_name.'.'.$field_name .'='.$field_data['join_column'].', ';
+					} elseif(isset($field_data['group_by'])) {
+						if($field_data['group_by'] == 'yes') {
+							$group_by_str .= $field_name. ', ';
+						} else {
+
+						}
+						//will form group on $field name
+					}
+				}
+			}
+
+			echo 'fields :'. $aggr_fun_str;
+			echo '<br>';
+			echo 'joins  :'. $join_col_str;
+			echo '<br>';
+			echo 'Group By :'.$group_by_str;
+
+
+
+
+
+		} else {
+			echo 'Report ID is not found in URL';
+		}
+	}
+
+
+
+
+	//function is used to get table fields used for ajax call
+	function table_fields($internal_call = false, $table_name = '') {
+
+		if($internal_call == false) {
+			$table_name = $this->input->post('table_name');
+		}
+
+		$result  = $this->db->table_exists($table_name);
+
+		if(!$result) {
+			$result['result'] = 'failure';
+			echo json_encode($result);
+			return ;
+		}
+
+		$result = $this->db->list_fields($table_name);
+
+		foreach ($result as $value) {
+			$fields_result['fields'][] = $value;
+		}
+
+		if($internal_call == false)
+		{
+			$fields_result['result'] = 'success';
+			echo json_encode($fields_result);
+
+		}else {
+			return $fields_result['fields'];
+		}
+	}
+
+	function list_() {
+		$this->load->model('mne/report_model', 'report');
+		$reports = $this->report->find_all();
+		$this->form_data['reports'] = $reports;
+		$this->load->view('mne/report_list', $this->form_data);
+	}
+
+
+ /**
+  * function is used to return report's  id, name values, used in autocomplete functionality in add permission
+  * functionality
+  */
+	function report_values() {
+		$this->load->model('mne/report_model', 'report');
+		$reports = $this->report->find_all();
+		$values = '';
+
+		foreach ($reports as $report ) {
+			echo $report->name.'|'.$report->id.chr(10); //chr(10) is returing \n charector
+		}
+	}
+
+
+}

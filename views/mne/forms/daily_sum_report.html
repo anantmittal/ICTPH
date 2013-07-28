@@ -1,0 +1,96 @@
+
+<script src="<?php echo base_url();?>assets/js/mne/daily_sum_report.js" type="text/javascript"></script>
+
+<input type="hidden" name="table_name" value="daily_sum_report" /> <br> 
+<table>
+
+<tr> <td><b>User</b></td><td><b><?php echo $this->session->userdata('username')?></b></td></tr>
+<input type="hidden" name="username" value="<?php echo $this->session->userdata('username')?>"/>
+<tr> <td><b>Date</b></td><td><input name="date" id="datepicker" type="text" size="10" class="datepicker" value="<?php echo date('d/m/Y');?>"/></td></tr>
+<tr><td colspan="2"><br/></td></tr>
+<tr> <td><b>Payment summary</b></td><td><input name="payment_nos" id="payment_nos" type="hidden" value="3" /><table border="1" width="90%">
+<tr><td></td><td><b>Total patients</b></td><td><b>Paid patients</b></td><td><b>Free patients</b></td><td><b>Total Collection</b></td><td><b>Amount Pending to KGFS</b></td></tr>
+<tr>
+	<input name="payment_label_value0" id="payment_label_value0" type="hidden" value="alakudi" /> 
+	<td width = 200> Alakudi</td>
+	<td><input name="paymenttotal_patients0" id="paymenttotal_patients0" type="text" size="3" onchange = "total_patients()" value="0" /></td>
+	<td><input name="paymentpaid_patients0" id="paymentpaid_patients0" type="text" size="3" onchange = "total_paid_patients()" value="0" /></td>
+	<td><input name="paymentfree_patients0" id="paymentfree_patients0" type="text" size="3" onchange = "total_free_patients()" value="0" /></td>
+	<td><input name="paymentcollection0" id="paymentcollection0" type="text" size="4" onchange = "total_collection()" value="0"/></td>
+	<td width = 100><input name="paymentkgfs_pending0" id="paymentkgfs_pending0" type="text" size="11" onchange = "total_kgfs_pending()" value="0"/></td>
+</tr>
+
+<tr>
+	<input name="payment_label_value1" id="payment_label_value1" type="hidden" value="karambayam" /> 
+	<td width = 200> Karambayam</td>
+	<td><input name="paymenttotal_patients1" id="paymenttotal_patients1" type="text" size="3" onchange = "total_patients()"  value="0"/></td>
+	<td><input name="paymentpaid_patients1" id="paymentpaid_patients1" type="text" size="3" onchange = "total_paid_patients()"  value="0"/></td>
+	<td><input name="paymentfree_patients1" id="paymentfree_patients1" type="text" size="3" onchange = "total_free_patients()"  value="0"/></td>
+	<td><input name="paymentcollection1" id="paymentcollection1" type="text" size="4" onchange = "total_collection()"  value="0"/></td>
+	<td><input name="paymentkgfs_pending1" id="paymentkgfs_pending1" type="text" size="11" onchange = "total_kgfs_pending()" value="0"/></td>
+</tr>
+
+<tr>
+	<input name="payment_label_value2" id="payment_label_value2" type="hidden" value="andipatti" /> 
+	<td width = 200> Andipatti</td>
+	<td><input name="paymenttotal_patients2" id="paymenttotal_patients2" type="text" size="3" onchange = "total_patients()" value="0" /></td>
+	<td><input name="paymentpaid_patients2" id="paymentpaid_patients2" type="text" size="3" onchange = "total_paid_patients()" value="0"/></td>
+	<td><input name="paymentfree_patients2" id="paymentfree_patients2" type="text" size="3" onchange = "total_free_patients()" value="0"/></td>
+	<td><input name="paymentcollection2" id="paymentcollection2" type="text" size="4" onchange = "total_collection()" value="0" /></td>
+	<td><input name="paymentkgfs_pending2" id="paymentkgfs_pending2" type="text" size="11" onchange = "total_kgfs_pending()" value="0"/></td>
+</tr>
+<tr>
+	<input name="payment_label_value3" id="payment_label_value3" type="hidden" value="kavarapattu" /> 
+	<td width = 200> Kavarapattu</td>
+	<td><input name="paymenttotal_patients3" id="paymenttotal_patients3" type="text" size="3" onchange = "total_patients()" value="0" /></td>
+	<td><input name="paymentpaid_patients3" id="paymentpaid_patients3" type="text" size="3" onchange = "total_paid_patients()" value="0"/></td>
+	<td><input name="paymentfree_patients3" id="paymentfree_patients3" type="text" size="3" onchange = "total_free_patients()" value="0"/></td>
+	<td><input name="paymentcollection3" id="paymentcollection3" type="text" size="4" onchange = "total_collection()" value="0" /></td>
+	<td><input name="paymentkgfs_pending3" id="paymentkgfs_pending3" type="text" size="11" onchange = "total_kgfs_pending()" value="0"/></td>
+</tr>
+<tr>
+	<input name="payment_label_value4" id="payment_label_value4" type="hidden" value="okkanadu melaiyur" /> 
+	<td width = 200> Okkanadu Melaiyur</td>
+	<td><input name="paymenttotal_patients4" id="paymenttotal_patients4" type="text" size="3" onchange = "total_patients()" value="0" /></td>
+	<td><input name="paymentpaid_patients4" id="paymentpaid_patients4" type="text" size="3" onchange = "total_paid_patients()" value="0"/></td>
+	<td><input name="paymentfree_patients4" id="paymentfree_patients4" type="text" size="3" onchange = "total_free_patients()" value="0"/></td>
+	<td><input name="paymentcollection4" id="paymentcollection4" type="text" size="4" onchange = "total_collection()" value="0" /></td>
+	<td><input name="paymentkgfs_pending4" id="paymentkgfs_pending4" type="text" size="11" onchange = "total_kgfs_pending()" value="0"/></td>
+</tr>
+<tr>
+	<td>Total</td>
+	<td><p id = "total_patients"> 0 </p></td>
+	<td><p id = "total_paid_patients"> 0 </p></td>
+	<td><p id = "total_free_patients"> 0 </p></td>
+	<td><p id = "total_collection"> 0 </p></td>
+	<td><p id = "total_kgfs_pending"> 0 </p></td>
+</tr>
+</table></td></tr>
+
+<tr><td colspan="2"><br/></td></tr>
+<tr> <td><b>Summary</b></td><td><input name="summary_nos" id="summary_nos" type="hidden" value="3" /><table border="1" width="90%"><tr><td></td><td>Opening Compliance</td><td>Closing Compliance</td><td>Unplanned Leave</td><td>Outages</td></tr><tr><td>Alakkudi</td><input name="summary_label_value0" id="summary_label_value0" type="hidden" value="alakkudi" /><td><select name="summaryopening_compliance0" id="summaryopening_compliance0" ><option value="y">Yes</option><option value="n">No</option></select>
+</td><td><select name="summaryclosing_compliance0" id="summaryclosing_compliance0" ><option value="y">Yes</option><option value="n">No</option></select>
+</td><td><select name="summaryunplanned_leave0" id="summaryunplanned_leave0" ><option value="n">No</option><option value="y">Yes</option></select>
+</td><td width = 100><input type="checkbox" name="summaryoutages0[]" id="summaryoutages0[]" value="hmis" />HMIS<br><input type="checkbox" name="summaryoutages0[]" id="summaryoutages0[]" value="internet" />Internet<br><input type="checkbox" name="summaryoutages0[]" id="summaryoutages0[]" value="supplies" />Supplies<br><input type="checkbox" name="summaryoutages0[]" id="summaryoutages0[]" value="electricity" />Electricity<br><input type="checkbox" name="summaryoutages0[]" id="summaryoutages0[]" value="other" />Other<br>
+</td></tr><tr><td>Karambayam</td><input name="summary_label_value1" id="summary_label_value1" type="hidden" value="karambayam" /><td><select name="summaryopening_compliance1" id="summaryopening_compliance1" ><option value="y">Yes</option><option value="n">No</option></select>
+</td><td><select name="summaryclosing_compliance1" id="summaryclosing_compliance1" ><option value="y">Yes</option><option value="n">No</option></select>
+</td><td><select name="summaryunplanned_leave1" id="summaryunplanned_leave1" ><option value="n">No</option><option value="y">Yes</option></select>
+</td><td width = 100><input type="checkbox" name="summaryoutages1[]" id="summaryoutages1[]" value="hmis" />HMIS<br><input type="checkbox" name="summaryoutages1[]" id="summaryoutages1[]" value="internet" />Internet<br><input type="checkbox" name="summaryoutages1[]" id="summaryoutages1[]" value="supplies" />Supplies<br><input type="checkbox" name="summaryoutages1[]" id="summaryoutages1[]" value="electricity" />Electricity<br><input type="checkbox" name="summaryoutages1[]" id="summaryoutages1[]" value="other" />Other<br>
+</td></tr><tr><td>Andipatti</td><input name="summary_label_value2" id="summary_label_value2" type="hidden" value="andipatti" /><td><select name="summaryopening_compliance2" id="summaryopening_compliance2" ><option value="y">Yes</option><option value="n">No</option></select>
+</td><td><select name="summaryclosing_compliance2" id="summaryclosing_compliance2" ><option value="y">Yes</option><option value="n">No</option></select>
+</td><td><select name="summaryunplanned_leave2" id="summaryunplanned_leave2" ><option value="n">No</option><option value="y">Yes</option></select>
+</td><td width = 100><input type="checkbox" name="summaryoutages2[]" id="summaryoutages2[]" value="hmis" />HMIS<br><input type="checkbox" name="summaryoutages2[]" id="summaryoutages2[]" value="internet" />Internet<br><input type="checkbox" name="summaryoutages2[]" id="summaryoutages2[]" value="supplies" />Supplies<br><input type="checkbox" name="summaryoutages2[]" id="summaryoutages2[]" value="electricity" />Electricity<br><input type="checkbox" name="summaryoutages2[]" id="summaryoutages2[]" value="other" />Other<br>
+</td></tr><tr><td>Kavarapattu</td><input name="summary_label_value3" id="summary_label_value3" type="hidden" value="kavarapattu" /><td><select name="summaryopening_compliance3" id="summaryopening_compliance3" ><option value="y">Yes</option><option value="n">No</option></select>
+</td><td><select name="summaryclosing_compliance3" id="summaryclosing_compliance3" ><option value="y">Yes</option><option value="n">No</option></select>
+</td><td><select name="summaryunplanned_leave3" id="summaryunplanned_leave3" ><option value="n">No</option><option value="y">Yes</option></select>
+</td><td width = 100><input type="checkbox" name="summaryoutages3[]" id="summaryoutages3[]" value="hmis" />HMIS<br><input type="checkbox" name="summaryoutages3[]" id="summaryoutages3[]" value="internet" />Internet<br><input type="checkbox" name="summaryoutages3[]" id="summaryoutages3[]" value="supplies" />Supplies<br><input type="checkbox" name="summaryoutages3[]" id="summaryoutages3[]" value="electricity" />Electricity<br><input type="checkbox" name="summaryoutages3[]" id="summaryoutages3[]" value="other" />Other<br>
+</td></tr><tr><td>Okkanadu Melaiyur</td><input name="summary_label_value4" id="summary_label_value4" type="hidden" value="okkanadu melaiyur" /><td><select name="summaryopening_compliance4" id="summaryopening_compliance4" ><option value="y">Yes</option><option value="n">No</option></select>
+</td><td><select name="summaryclosing_compliance4" id="summaryclosing_compliance4" ><option value="y">Yes</option><option value="n">No</option></select>
+</td><td><select name="summaryunplanned_leave4" id="summaryunplanned_leave4" ><option value="n">No</option><option value="y">Yes</option></select>
+</td><td width = 100><input type="checkbox" name="summaryoutages4[]" id="summaryoutages4[]" value="hmis" />HMIS<br><input type="checkbox" name="summaryoutages4[]" id="summaryoutages4[]" value="internet" />Internet<br><input type="checkbox" name="summaryoutages4[]" id="summaryoutages4[]" value="supplies" />Supplies<br><input type="checkbox" name="summaryoutages4[]" id="summaryoutages4[]" value="electricity" />Electricity<br><input type="checkbox" name="summaryoutages4[]" id="summaryoutages4[]" value="other" />Other<br>
+</td></tr></table></td></tr>
+<tr><td colspan="2"><br/></td></tr>
+<tr> <td><b>Comments</b></td><td><textarea name="comments" id="comments" size="500" style="width:490px;height:250px"></textarea></td></tr>
+<tr> <td><b>Click Here To Email Report</b></td><td><input type="checkbox" name="email" id="email" value="email" />Email</td></tr>
+</table> 
+

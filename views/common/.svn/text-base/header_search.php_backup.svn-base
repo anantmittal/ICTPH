@@ -1,0 +1,69 @@
+<script language="javascript">
+$(document).ready(function(){
+	$('#search').click(function(){
+		var post_data ='id='+$('#search_id').val()+ '&type='+ $('#type').val();
+		$.ajax({
+			type: "POST",
+			url: "<?php echo "{$this->config->item('base_url')}"?>index.php/hospitalization/common/search_form_redirect",
+			data: post_data,
+			success: function(result) {
+				var type;
+				var str;
+				
+				if(result != '') {
+					result = result.split('|');
+					type = result[0];
+					str = result[1];
+
+					if(type == 'error')
+					   alert('error :'+str);
+//	 				$('#error').html(str);
+					else {
+//						alert('redirect to :'+str);
+					    window.location = str;
+					}
+				}
+			}
+		});
+	});
+});
+</script>
+<div class="search_box">
+	<div class="search_left">
+    	<div class="search_col" style="width:100px"><span class="form_head">Enter the ID</span></div>
+        <div class="search_col">
+        <input name="search_id" id="search_id" type="text" value="" /></div>
+
+<div class="search_col" style="margin-left:10px; margin-right:10px;">
+          <label>
+            <select name="type" id="type" >
+              <option value="policy">Policy</option>
+              <option value="preauthorization">Preauth</option>
+              <option value="hospitalization">Hospitalization</option>
+              <option value="claim">Claim</option>
+              <option value="hospital">Hospital</option>
+            </select>
+          </label>
+        </div>
+
+<input type="button" id="search" class="submit" value="Go">	
+
+<!--    <a href="#" id="search"><input type="image" src="<?php echo "{$this->config->item('base_url')}"?>assets/images/common_images/btn_search.gif" alt="" width="86" height="23" border="0" /></a>-->
+
+    </div>   
+    <div class="search_right">User <?php echo $this->session->userdata('username')?>, 
+	<a href="<?php echo $this->config->item('base_url');?>index.php/admin/enrolment/index">Home</a>,
+	<a href="<?php echo $this->config->item('base_url');?>index.php/session/session/logout">Logout</a></div>
+</div>
+<!--
+    <div class="search_right">User Arvind, <a href="#">Logout</a></div>
+</div>
+-->
+
+<?php $msg_type = $this->session->flashdata('msg_type');
+//$msg_type can be 'error', 'success'
+if($msg_type != false) { ?> 
+<div class="<?php if ($msg_type === 'error') echo 'error'; else echo 'success'?>">
+<?php echo $this->session->flashdata('msg'); ?> 
+</div>
+<?php } ?>

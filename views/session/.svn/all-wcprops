@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/ictph/!svn/ver/290/trunk/sgv/application/views/session
+END
+add_user.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/ictph/!svn/ver/24/trunk/sgv/application/views/session/add_user.php
+END
+change_password.php
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/ictph/!svn/ver/223/trunk/sgv/application/views/session/change_password.php
+END
+login.php
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/ictph/!svn/ver/290/trunk/sgv/application/views/session/login.php
+END

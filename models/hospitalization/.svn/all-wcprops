@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/hospitalization
+END
+claims_status_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/hospitalization/claims_status_model.php
+END
+payment_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/hospitalization/payment_model.php
+END
+claim_review_doctor_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/hospitalization/claim_review_doctor_model.php
+END
+policy_detail_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/hospitalization/policy_detail_model.php
+END
+hospitalization_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/hospitalization/hospitalization_model.php
+END
+hospital_record_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/hospitalization/hospital_record_model.php
+END
+hospital_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/hospitalization/hospital_model.php
+END
+claim_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/hospitalization/claim_model.php
+END
+hospitalization_cost_item_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/hospitalization/hospitalization_cost_item_model.php
+END
+claim_status_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/hospitalization/claim_status_model.php
+END
+claim_settlement_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/hospitalization/claim_settlement_model.php
+END
+claim_cost_item_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/hospitalization/claim_cost_item_model.php
+END
+backend_claim_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/hospitalization/backend_claim_model.php
+END
+backend_claim_status_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/hospitalization/backend_claim_status_model.php
+END
+backend_claim_settlement_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/hospitalization/backend_claim_settlement_model.php
+END
+pre_authorization_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/hospitalization/pre_authorization_model.php
+END
+member_policy_detail_model.php
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/ictph/!svn/ver/290/trunk/sgv/application/models/hospitalization/member_policy_detail_model.php
+END

@@ -1,0 +1,1 @@
+<?php class mne_acute_illness_infant_model extends IgnitedRecord { var $table = "mne_acute_illness_infant";}

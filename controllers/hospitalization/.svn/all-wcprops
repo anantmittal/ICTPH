@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/ictph/!svn/ver/357/trunk/sgv/application/controllers/hospitalization
+END
+welcome.php
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/ictph/!svn/ver/290/trunk/sgv/application/controllers/hospitalization/welcome.php
+END
+backend_claim.php
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/ictph/!svn/ver/290/trunk/sgv/application/controllers/hospitalization/backend_claim.php
+END
+backend_claim_entry.php
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/ictph/!svn/ver/290/trunk/sgv/application/controllers/hospitalization/backend_claim_entry.php
+END
+preautherization.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/ictph/!svn/ver/357/trunk/sgv/application/controllers/hospitalization/preautherization.php
+END
+hospital_management.php
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/ictph/!svn/ver/290/trunk/sgv/application/controllers/hospitalization/hospital_management.php
+END
+payments.php
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/ictph/!svn/ver/5/trunk/sgv/application/controllers/hospitalization/payments.php
+END
+hospitalization.php
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/ictph/!svn/ver/290/trunk/sgv/application/controllers/hospitalization/hospitalization.php
+END
+index.html
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/ictph/!svn/ver/5/trunk/sgv/application/controllers/hospitalization/index.html
+END
+policy_details.php
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/ictph/!svn/ver/357/trunk/sgv/application/controllers/hospitalization/policy_details.php
+END
+claim.php
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/ictph/!svn/ver/290/trunk/sgv/application/controllers/hospitalization/claim.php
+END
+search.php
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/ictph/!svn/ver/357/trunk/sgv/application/controllers/hospitalization/search.php
+END
+hosp_base_controller.php
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/ictph/!svn/ver/357/trunk/sgv/application/controllers/hospitalization/hosp_base_controller.php
+END
+common.php
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/ictph/!svn/ver/5/trunk/sgv/application/controllers/hospitalization/common.php
+END

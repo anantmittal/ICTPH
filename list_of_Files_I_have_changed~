@@ -1,0 +1,49 @@
+MODELS THAT I HAVE added METHODS TO
+
+opd/provider_location_model,
+opd/visit_model,
+chw/opd_diagnosis_model,
+demographic/person_model,
+mne/forms/mne_pisp_adult_model,
+demographic/household_model
+
+CONTROLLERS THAT I HAVE ADDED METHODS TO
+
+mne/graphical_reports.php   //I made this file
+mne/report
+
+VIEW FILES THAT I HAVE CHANGED or ADDED
+
+home.php,
+mne/graphical_reports/
+mne/reports_categories_home
+
+JS FILES THAT I HAVE ADDED
+
+assets/js/report/report.js   //I made this file
+
+CSS FILES THAT I HAVE ADDED
+
+assets/css/report.css   //I made this file
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/ictph/!svn/ver/364/trunk/sgv/application/controllers/admin
+END
+user_management.php
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/ictph/!svn/ver/290/trunk/sgv/application/controllers/admin/user_management.php
+END
+consumables_configuration.php
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/ictph/!svn/ver/312/trunk/sgv/application/controllers/admin/consumables_configuration.php
+END
+enrolment.php
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/ictph/!svn/ver/364/trunk/sgv/application/controllers/admin/enrolment.php
+END
+visit_document_configuration.php
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/ictph/!svn/ver/312/trunk/sgv/application/controllers/admin/visit_document_configuration.php
+END
+search.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/ictph/!svn/ver/357/trunk/sgv/application/controllers/admin/search.php
+END
+configuration.php
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/ictph/!svn/ver/290/trunk/sgv/application/controllers/admin/configuration.php
+END

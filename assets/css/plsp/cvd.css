@@ -1,0 +1,47 @@
+#mainframe
+{
+	align: center;
+}
+.outertable
+{
+	border: 1px;
+	align:center;
+	width:60%;
+	
+}
+
+.bucket1
+{
+	background-color: #66FF99;
+	text-align: center;
+	width:33%
+}
+
+.bucket2
+{
+	background-color: #FFFF99;
+	text-align: center;
+	width:33%
+}
+
+.bucket3
+{
+	background-color: #FFCC66;
+	text-align: center;
+	width:33%;
+}
+
+.bucket4
+{
+	background-color: #FF9966;
+	text-align: center;
+	width:33%
+}
+
+.bucket5
+{
+	background-color: #CC3300;
+	text-align: center;
+	width:33%;
+	color: #FFFFFF;
+}

@@ -1,0 +1,1 @@
+<?php class mne_text_form_model extends IgnitedRecord {}

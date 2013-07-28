@@ -1,0 +1,14 @@
+th.key{
+	width:30%;
+}
+
+td.count{
+	width:45%;
+}
+table
+{
+	align:center;
+	width:70%;
+	border:1;
+	cellpadding:3;
+}
